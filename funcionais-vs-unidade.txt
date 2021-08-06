@@ -1,0 +1,3 @@
+O teste de unidade testa apenas um pedaço de uma classe, um método, enquanto o teste funcional vai testar uma funcionalidade, que pode chamar vários métodos e até utilizar dependências externas.
+
+Testes funcionais demoram bastante a rodar, enquanto testes de unidade tem que, por definição, rodar quase instantaneamente.
