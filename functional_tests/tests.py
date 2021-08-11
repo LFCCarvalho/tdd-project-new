@@ -1,4 +1,4 @@
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
@@ -7,7 +7,7 @@ import unittest
 
 MAX_WAIT = 5
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
   def setUp(self):
     self.browser = webdriver.Firefox()
@@ -16,7 +16,7 @@ class NewVisitorTest(LiveServerTestCase):
     self.browser.quit()
 
   def test_can_start_a_list_for_one_user(self): 
-    
+
     # Maria decidiu utilizar o novo app TODO. Ela entra em sua página principal:
     self.browser.get(self.live_server_url)
 
@@ -36,7 +36,7 @@ class NewVisitorTest(LiveServerTestCase):
     # "1: Estudar testes funcionais" como um item da lista TODO
     inputbox.send_keys(Keys.ENTER)
     self.wait_for_row_in_list_table('1: Estudar testes funcionais')
-        
+
     # Ainda existe uma caixa de texto convidando para adicionar outro item
     # Ela digita: "Estudar testes de unidade"
     inputbox = self.browser.find_element_by_id('id_new_item')  
@@ -53,7 +53,7 @@ class NewVisitorTest(LiveServerTestCase):
     # Ela visita a URL: a sua lista TODO ainda está armazenada
 
     # Satisfeita, ela vai dormir
-        
+
   def test_multiple_users_can_start_lists_at_different_urls(self):
     # Maria começa uma nova lista
     self.browser.get(self.live_server_url)
